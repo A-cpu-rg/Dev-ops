@@ -1,4 +1,4 @@
-# Shop Smart - E-Commerce Platform
+# Devops
 
 A full-stack e-commerce web application built with modern technologies for seamless online shopping experience.
 
