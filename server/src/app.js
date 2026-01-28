@@ -11,14 +11,14 @@ app.use(express.json());
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    message: 'ShopSmart Backend is running',
+    message: 'Devops Backend is running',
     timestamp: new Date().toISOString()
   });
 });
 
 // Root Route (optional, just to show something)
 app.get('/', (req, res) => {
-  res.send('ShopSmart Backend Service');
+  res.send('Devops Backend Service');
 });
 
 module.exports = app;

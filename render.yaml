@@ -10,7 +10,7 @@ services:
         value: 10000
 
   - type: static
-    name: shopsmart-frontend
+    name: Devops-frontend
     env: static
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: client/dist
@@ -18,5 +18,5 @@ services:
       - key: VITE_API_URL
         fromService:
           type: web
-          name: shopsmart-backend
+          name: Devops-backend
           property: url

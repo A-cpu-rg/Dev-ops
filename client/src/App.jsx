@@ -13,7 +13,7 @@ function App() {
 
     return (
         <div className="container">
-            <h1>ShopSmart</h1>
+            <h1>Devops</h1>
             <div className="card">
                 <h2>Backend Status</h2>
                 {data ? (

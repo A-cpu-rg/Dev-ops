@@ -1,7 +1,7 @@
 {
-  "name": "shopsmart-backend",
+  "name": "Devops-backend",
   "version": "1.0.0",
-  "description": "Backend API for ShopSmart",
+  "description": "Backend API for Devops",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
