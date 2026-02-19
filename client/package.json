@@ -1,5 +1,5 @@
 {
-  "name": "Devops-frontend",
+  "name": "devops-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,13 +8,18 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "test:unit": "vitest run src/__tests__/unit/",
+    "test:integration": "vitest run src/__tests__/integration/",
+    "test:e2e": "npx playwright test",
+    "test:all": "vitest run src/__tests__/ && npx playwright test"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.42.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.0",
     "@types/react": "^18.2.66",
