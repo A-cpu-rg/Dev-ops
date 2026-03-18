@@ -1,8 +1,12 @@
 node_modules
 /client/node_modules
+/server/node_modules
+/e2e/node_modules
 .DS_Store
 .env
 dist
 build
 coverage
 .vercel
+playwright-report
+test-results
