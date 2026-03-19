@@ -58,9 +58,7 @@ describe('Integration Tests — HTTP API', () => {
   // ── CORS headers ───────────────────────────────────────────────────────────
   describe('CORS headers', () => {
     it('includes Access-Control-Allow-Origin on /api/health', async () => {
-      const res = await request(app)
-        .get('/api/health')
-        .set('Origin', 'http://localhost:5173');
+      const res = await request(app).get('/api/health').set('Origin', 'http://localhost:5173');
       expect(res.headers['access-control-allow-origin']).toBeDefined();
     });
   });
