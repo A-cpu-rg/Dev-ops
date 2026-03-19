@@ -5,9 +5,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependencies"
-      - "github-actions"
 
   # Root npm dependencies
   - package-ecosystem: "npm"
@@ -23,15 +20,9 @@ updates:
     directory: "/client"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependencies"
-      - "frontend"
 
   # Backend (server) npm dependencies
   - package-ecosystem: "npm"
     directory: "/server"
     schedule:
       interval: "weekly"
-    labels:
-      - "dependencies"
-      - "backend"
