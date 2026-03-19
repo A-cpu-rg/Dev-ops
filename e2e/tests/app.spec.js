@@ -7,16 +7,16 @@ test.describe('Devops Application — E2E', () => {
 
   // ── Page load ───────────────────────────────────────────────────────────────
   test('page title is visible', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: /devops/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /dev-ops dashboard/i })).toBeVisible();
   });
 
-  // ── Backend status card ─────────────────────────────────────────────────────
-  test('shows "Backend Status" card', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: /backend status/i })).toBeVisible();
+  // ── API Status card ─────────────────────────────────────────────────────────
+  test('shows "API Status" card', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: /api status/i })).toBeVisible();
   });
 
   test('displays backend health data after loading', async ({ page }) => {
-    // Wait for the loading text to disappear (data has loaded)
+    // Wait for the loading spinner to disappear (data has loaded)
     await expect(page.getByText(/loading backend status/i)).not.toBeVisible({ timeout: 10_000 });
 
     // Status should be "ok"
