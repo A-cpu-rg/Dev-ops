@@ -232,8 +232,8 @@ Every pull request must pass lint checks before it can be merged.
 ### Render (automatic)
 
 Defined in `render.yaml`:
-- **Backend** — Node.js web service, starts with `node src/index.js`
-- **Frontend** — Static site, built with `vite build`
+- **Backend** (`dev-ops-backend`) — Node.js web service, starts with `node src/index.js`
+- **Frontend** (`dev-ops-frontend`) — Static site, built with `vite build`
 
 ### AWS EC2 (via GitHub Actions)
 

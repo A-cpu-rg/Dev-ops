@@ -1,4 +1,4 @@
-# Project Explanation: devops-project
+# Project Explanation: Dev-ops
 
 This document provides a detailed explanation of the architecture, workflow, design decisions, and challenges encountered during the development of this project, explicitly fulfilling the evaluation criteria.
 

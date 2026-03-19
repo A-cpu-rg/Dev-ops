@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: dev-ops
+    name: dev-ops-backend
     env: node
     plan: free
     buildCommand: cd server && npm install
@@ -10,7 +10,7 @@ services:
         value: 10000
 
   - type: static
-    name: Devops-frontend
+    name: dev-ops-frontend
     env: static
     buildCommand: cd client && npm install && npm run build
     staticPublishPath: client/dist
@@ -18,5 +18,5 @@ services:
       - key: VITE_API_URL
         fromService:
           type: web
-          name: dev-ops
+          name: dev-ops-backend
           property: url
