@@ -28,6 +28,25 @@ jobs:
           script: |
             set -e
 
+            # Install Git if not present
+            if ! command -v git &> /dev/null; then
+              echo "Git not found. Installing Git..."
+              sudo apt-get update && sudo apt-get install -y git
+            fi
+
+            # Install Node.js 20.x if not present
+            if ! command -v node &> /dev/null; then
+              echo "Node.js not found. Installing Node.js 20.x..."
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+
+            # Install PM2 if not present
+            if ! command -v pm2 &> /dev/null; then
+              echo "PM2 not found. Installing PM2 globally..."
+              sudo npm install -g pm2
+            fi
+
             # Navigate to the application directory (idempotent: create if missing)
             mkdir -p ~/app
             cd ~/app
