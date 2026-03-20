@@ -53,8 +53,9 @@ jobs:
 
             # Pull latest code (idempotent: init if not a git repo)
             if [ ! -d .git ]; then
-              git clone https://github.com/${{ github.repository }} .
+              git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git .
             else
+              git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
               git fetch origin
               git reset --hard origin/main
             fi
