@@ -1,20 +1,35 @@
-# Use Node.js 18 Alpine for a lightweight image
-FROM node:18-alpine
+# Stage 1: Builder
+FROM node:18-alpine AS builder
 
-# Set working directory
 WORKDIR /app
 
-# Copy dependency files first (for Docker layer caching)
 COPY package*.json ./
 
-# Install production dependencies only
-RUN npm install --production
+RUN npm install
 
-# Copy application source code
 COPY src/ ./src/
 
-# Expose the port the app runs on
+# Stage 2: Production
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy only production dependencies from builder
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/src ./src/
+COPY package.json ./
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 && \
+    chown -R nodejs:nodejs /app
+
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:5001/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
+USER nodejs
+
 EXPOSE 5001
 
-# Start the application
 CMD ["node", "src/index.js"]

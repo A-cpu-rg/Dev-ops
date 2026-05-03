@@ -7,7 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Health Check Route
+// Health Check Routes (for Docker/K8s healthchecks)
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+// Health Check Route for API
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
@@ -16,7 +21,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Root Route (optional, just to show something)
+// Root Route
 app.get('/', (req, res) => {
   res.send('Devops Backend Service');
 });
