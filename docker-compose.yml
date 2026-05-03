@@ -1,0 +1,24 @@
+services:
+  app:
+    build: ./server
+    container_name: my-app
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    environment:
+      - PORT=5001
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=test
+
+  db:
+    image: mysql:8.0
+    container_name: my-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+    ports:
+      - "3307:3306"
