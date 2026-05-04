@@ -189,11 +189,15 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Download active task definition
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ env.ECS_TASK_DEFINITION }} --query taskDefinition > task-def.json
+
       - name: Update ECS task definition image
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: server/ecs-task-definition.json
+          task-definition: task-def.json
           container-name: devops-app
           image: ${{ steps.login-ecr.outputs.registry }}/devops-app:${{ github.sha }}
 
