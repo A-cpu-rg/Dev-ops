@@ -10,7 +10,6 @@ terraform {
   backend "s3" {
     bucket         = "devops-terraform-state"
     key            = "devops/terraform.tfstate"
-    region         = "ap-south-1"
     encrypt        = true
   }
 }
