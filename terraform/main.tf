@@ -355,7 +355,7 @@ resource "aws_ecs_service" "devops" {
 
   depends_on = [
     aws_lb_listener.devops,
-    aws_iam_role_policy.ecs_task_execution_role_policy
+    aws_iam_role_policy_attachment.ecs_task_execution_role_policy
   ]
 
   tags = {
