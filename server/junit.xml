@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="10" failures="0" errors="0" time="0.539">
+  <testsuite name="GET /api/health" errors="0" failures="0" skipped="0" timestamp="2026-05-04T18:43:33" time="0.411" tests="1">
+    <testcase classname="GET /api/health should return 200 and status ok" name="GET /api/health should return 200 and status ok" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="Integration Tests — HTTP API" errors="0" failures="0" skipped="0" timestamp="2026-05-04T18:43:33" time="0.427" tests="9">
+    <testcase classname="Integration Tests — HTTP API GET /api/health returns HTTP 200" name="Integration Tests — HTTP API GET /api/health returns HTTP 200" time="0.014">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET /api/health returns JSON content-type" name="Integration Tests — HTTP API GET /api/health returns JSON content-type" time="0.003">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET /api/health body contains status &quot;ok&quot;" name="Integration Tests — HTTP API GET /api/health body contains status &quot;ok&quot;" time="0.002">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET /api/health body contains a message string" name="Integration Tests — HTTP API GET /api/health body contains a message string" time="0.002">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET /api/health body contains a valid ISO timestamp" name="Integration Tests — HTTP API GET /api/health body contains a valid ISO timestamp" time="0.002">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET / returns HTTP 200" name="Integration Tests — HTTP API GET / returns HTTP 200" time="0.001">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET / returns a non-empty text response" name="Integration Tests — HTTP API GET / returns a non-empty text response" time="0.001">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API GET /api/unknown returns HTTP 404 for undefined routes" name="Integration Tests — HTTP API GET /api/unknown returns HTTP 404 for undefined routes" time="0.002">
+    </testcase>
+    <testcase classname="Integration Tests — HTTP API CORS headers includes Access-Control-Allow-Origin on /api/health" name="Integration Tests — HTTP API CORS headers includes Access-Control-Allow-Origin on /api/health" time="0.004">
+    </testcase>
+  </testsuite>
+</testsuites>
