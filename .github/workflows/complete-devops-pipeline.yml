@@ -83,8 +83,26 @@ jobs:
         with:
           terraform_version: 1.5.0
 
+      - name: Setup Terraform State Bucket
+        id: state-bucket
+        run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          BUCKET_NAME="devops-tf-state-${ACCOUNT_ID}"
+          echo "bucket=$BUCKET_NAME" >> $GITHUB_OUTPUT
+          
+          if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
+            echo "Bucket $BUCKET_NAME exists."
+          else
+            echo "Creating bucket $BUCKET_NAME..."
+            if [ "${{ secrets.AWS_REGION }}" == "us-east-1" ]; then
+              aws s3api create-bucket --bucket "$BUCKET_NAME" --region us-east-1
+            else
+              aws s3api create-bucket --bucket "$BUCKET_NAME" --region ${{ secrets.AWS_REGION }} --create-bucket-configuration LocationConstraint=${{ secrets.AWS_REGION }}
+            fi
+          fi
+
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -backend-config="bucket=${{ steps.state-bucket.outputs.bucket }}"
         working-directory: terraform
         env:
           AWS_REGION: ${{ secrets.AWS_REGION }}
